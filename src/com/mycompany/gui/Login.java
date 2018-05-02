@@ -8,18 +8,22 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.NetworkManager;
 import com.codename1.messaging.Message;
 import com.codename1.ui.Button;
+import com.codename1.ui.Container;
 import com.codename1.ui.Display;
 import com.codename1.ui.Font;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
+import com.codename1.ui.Label;
 import com.codename1.ui.Slider;
 import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.geom.Dimension;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.Border;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.util.Resources;
 import com.mycompany.Controllers.LoginController;
 import com.mycompany.Entities.Users;
 import com.mycompany.Services.UsersService;
@@ -37,11 +41,9 @@ public class Login {
 
     
     public Login() {
-       
-        
-       f = new Form("Connexion");
 
-        TextField u = new TextField("", "Nom d'utilisateur", 20, TextField.EMAILADDR) ;
+       f = new Form("Connexion");
+       TextField u = new TextField("", "Nom d'utilisateur", 20, TextField.EMAILADDR) ;
         TextField p =  new TextField("", "Password", 20, TextField.PASSWORD) ;
         btnaff = new Button("Se connecter");
         Button newaccount = new Button("S'inscrire");
@@ -80,7 +82,7 @@ f.add(p);
              
             
         }else if (logged.equals("good") ) {
-                Panier r = new Panier();
+                Adresses r = new Adresses();
           r.getF().show(); 
             }
         else if (logged.equals("nouser")) {

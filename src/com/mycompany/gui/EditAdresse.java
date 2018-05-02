@@ -6,6 +6,7 @@
 package com.mycompany.gui;
 
 import com.codename1.ui.Button;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.Form;
 import com.codename1.ui.TextField;
 import com.mycompany.Services.AdressesService;
@@ -39,6 +40,13 @@ public class EditAdresse {
         f.add(ville);
         f.add(complement);
         btnaff.addActionListener((evt) -> {
+            if (nom.getText().equals("") || prenom.getText().equals("") || adresse.getText().equals("") || tel.getText().equals("")
+                    || cp.getText().equals("") || pays.getText().equals("") || ville.getText().equals("") || complement.getText().equals("")
+                    || !isInteger(tel.getText())) {
+                Dialog.show("Erreur", "Merci de vérifier vos informations" , "OK", null); 
+            }
+            else
+            {
             AdressesService as = new AdressesService();
             Adresses ad = new Adresses();
             a.setNom(nom.getText());
@@ -52,6 +60,8 @@ public class EditAdresse {
             as.updateAdresse(a);
             Adresses r = new Adresses();
           r.getF().show();
+            }
+           
         });
         f.add(btnaff);
         f.showBack();
@@ -64,5 +74,14 @@ public class EditAdresse {
 
     public void setF(Form f) {
         this.f = f;
+    }
+     public static boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException | NullPointerException e) {
+            return false;
+        }
+
+        return true;
     }
 }

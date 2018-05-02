@@ -36,7 +36,7 @@ Form f;
                 TextField email = new TextField("", "email") ;
                
                 btnaff.addActionListener((evt) -> {
-                    if (num.getText()==null || mois.getText()==null || annee.getText()==null || email.getText()==null ) {
+                    if (num.getText()=="" || mois.getText()=="" || annee.getText()=="" || email.getText()=="" ) {
                         Dialog.show("Erreur", "Merci de vérifier vos informations" , "OK", null); 
                     }
                     else{

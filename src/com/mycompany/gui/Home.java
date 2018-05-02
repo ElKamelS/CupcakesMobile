@@ -6,8 +6,15 @@
 package com.mycompany.gui;
 
 import com.codename1.ui.Button;
+import com.codename1.ui.Container;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.Toolbar;
+import com.codename1.ui.layouts.BorderLayout;
+import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.util.Resources;
 import com.mycompany.Entities.Panier;
 import com.mycompany.myapp.MyApplication;
 import java.util.Iterator;
@@ -16,10 +23,11 @@ import java.util.Iterator;
  *
  * @author berrahal
  */
-public class Home {
-      Form f;
+public class Home extends Form {
+     public static Form f;
 
     Button btnaff;
+
     
     public Home(){
         
@@ -56,4 +64,23 @@ public class Home {
     public void setF(Form f) {
         this.f = f;
     }
+    
+      public static void installSidemenu() {
+
+                  Toolbar tb = f.getToolbar();
+
+Container topBar = BorderLayout.east(new Label("Menu"));
+topBar.add(BorderLayout.SOUTH, new Label("Cool App Tagline...", "SidemenuTagline")); 
+topBar.setUIID("SideCommand");
+
+tb.addComponentToSideMenu(topBar);
+
+tb.addMaterialCommandToSideMenu("Home", FontImage.MATERIAL_HOME, e -> {}); 
+tb.addMaterialCommandToSideMenu("Website", FontImage.MATERIAL_WEB, e -> {});
+tb.addMaterialCommandToSideMenu("Settings", FontImage.MATERIAL_SETTINGS, e -> {});
+tb.addMaterialCommandToSideMenu("About", FontImage.MATERIAL_INFO, e -> {});
+       
+    }
+      
+      
 }

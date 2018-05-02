@@ -6,9 +6,11 @@
 package com.mycompany.gui;
 
 import com.codename1.ui.Button;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.Form;
 import com.codename1.ui.TextField;
 import com.mycompany.Services.AdressesService;
+import static com.mycompany.gui.EditAdresse.isInteger;
 import com.mycompany.myapp.MyApplication;
 
 /**
@@ -17,7 +19,7 @@ import com.mycompany.myapp.MyApplication;
  */
 public class AddAdresse {
 Form f;
-    Button btnaff = new Button("Ajouter");
+    Button btnaff = new Button("Ajouter adresse");
     public AddAdresse() {
                         f = new Form("Ajouter adresse");
 
@@ -38,7 +40,14 @@ Form f;
         f.add(ville);
         f.add(complement);
         btnaff.addActionListener((evt) -> {
-            AdressesService as = new AdressesService();
+            if (nom.getText().equals("") || prenom.getText().equals("") || adresse.getText().equals("") || tel.getText().equals("")
+                    || cp.getText().equals("") || pays.getText().equals("") || ville.getText().equals("") || complement.getText().equals("")
+                    || !isInteger(tel.getText())) {
+                Dialog.show("Erreur", "Merci de vérifier vos informations" , "OK", null); 
+            }
+            else 
+            {
+                 AdressesService as = new AdressesService();
             com.mycompany.Entities.Adresses a= new com.mycompany.Entities.Adresses();
             a.setNom(nom.getText());
             a.setPrenom(prenom.getText());
@@ -51,7 +60,9 @@ Form f;
             a.setUtilisateur_id(MyApplication.user.getId());
             as.addAdresses(a);
             Adresses r = new Adresses();
-          r.getF().show();
+          r.getF().show();  
+            }
+         
         });
         f.add(btnaff);
         
@@ -64,5 +75,6 @@ Form f;
     public void setF(Form f) {
         this.f = f;
     }
+     
     
 }
