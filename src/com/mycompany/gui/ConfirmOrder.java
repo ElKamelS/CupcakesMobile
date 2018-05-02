@@ -61,11 +61,11 @@ public class ConfirmOrder {
                     line.setQte(p.getQte());
                     lines.addLineOrder(line);
                     o.setId(primkey);
-                    MyApplication.Panier.clear();
+                    
+                }
+MyApplication.Panier.clear();
                     PaiementOrder r = new PaiementOrder(o);
                     r.getF().show();
-                }
-
             });
 
             Container c1 = new Container(BoxLayout.y());

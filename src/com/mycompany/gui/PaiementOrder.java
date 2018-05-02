@@ -36,7 +36,14 @@ Form f;
                 TextField email = new TextField("", "email") ;
                
                 btnaff.addActionListener((evt) -> {
-                     int mois0 = Integer.parseInt(mois.getText());
+                    if (num.getText()==null || mois.getText()==null || annee.getText()==null || email.getText()==null ) {
+                        Dialog.show("Erreur", "Merci de vérifier vos informations" , "OK", null); 
+                    }
+                    else{
+                        
+                  
+ 
+                    int mois0 = Integer.parseInt(mois.getText());
         int annee0 = Integer.parseInt(annee.getText());
                 
                                     Token token = PaiementStripe.getToken("pk_test_AuAMdXwE57NnBcd4Xld65Ez4", num.getText(), mois0, annee0, cvv.getText(), email.getText());
@@ -56,7 +63,7 @@ Form f;
  {
      Dialog.show("Erreur", "Merci de vérifier vos informations" , "OK", null); 
  }
-                });
+                 } });
                 f.add(num);
                 f.add(mois);
                 f.add(annee);

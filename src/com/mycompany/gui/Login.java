@@ -64,7 +64,7 @@ f.add(p);
                  Home r = new Home();
           r.getF().show();
             }
-            
+           
         });
       
         
@@ -80,7 +80,7 @@ f.add(p);
              
             
         }else if (logged.equals("good") ) {
-                UserCommandes r = new UserCommandes();
+                Panier r = new Panier();
           r.getF().show(); 
             }
         else if (logged.equals("nouser")) {
